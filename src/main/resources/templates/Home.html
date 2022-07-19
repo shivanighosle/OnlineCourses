@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Courses</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/js/Signin.js}"></script>
+<link th:href="@{/css/Signin.css}" rel="stylesheet" type="text/css"/>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+	<header class="header">
+		<a href="ViewHome" class="logo">Online Courses</a>
+		<nav class="nav-items main-nav">			
+			 <a href="#login">Sign In/Sign Up</a> <a href="Home">Add Courses</a> <a href="Home">View Courses</a> <a
+				href="#">About</a> <a href="#">Contact</a>
+		</nav>
+	</header>
+	<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+			<ul class="cd-switcher">
+				<li><a href="#login">Sign in</a></li>
+				<li><a href="#login">New account</a></li>
+			</ul>
+
+			<div id="cd-login"> <!-- log in form -->
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">Password</label>
+						<input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
+						<a href="#login" class="hide-password">Hide</a>
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<input type="checkbox" id="remember-me" checked>
+						<label for="remember-me">Remember me</label>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width" type="submit" value="Login">
+					</p>
+				</form>
+				
+				<p class="cd-form-bottom-message"><a href="#login">Forgot your password?</a></p>
+				<!-- <a href="#0" class="cd-close-form">Close</a> -->
+			</div> <!-- cd-login -->
+
+			<div id="cd-signup"> <!-- sign up form -->
+				<form class="cd-form" action="/registration" th:object="${userEntity}" method="POST">
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="signup-firstname">FirstName</label>
+						<input class="full-width has-padding has-border" id="signup-firstname" type="text" placeholder="Firstname" field="*{firstName}">						
+					</p>
+					
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="signup-lastname">FirstName</label>
+						<input class="full-width has-padding has-border" id="signup-lastname" type="text" placeholder="Lastname" field="*{lastName}">
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signup-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail" field="*{email}">
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password">Password</label>
+						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password" field="*{password}">
+						<a href="#login" class="hide-password">Hide</a>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width has-padding" type="submit" value="Create account">
+					</p>
+				</form>
+
+				<!-- <a href="#0" class="cd-close-form">Close</a> -->
+			</div> <!-- cd-signup -->
+
+			<div id="cd-reset-password"> <!-- reset password form -->
+				<p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="reset-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width has-padding" type="submit" value="Reset password">
+					</p>
+				</form>
+
+				<p class="cd-form-bottom-message"><a href="#login">Back to log-in</a></p>
+			</div> <!-- cd-reset-password -->
+			<a href="#login" class="cd-close-form">Close</a>
+		</div> <!-- cd-user-modal-container -->
+	</div> <!-- cd-user-modal -->
+	<main>
+		<div class="intro">
+			<h1>A Web Developer</h1>
+			<p>I am a web developer and I love to create websites.</p>
+			<button>Learn More</button>
+		</div>
+		<div class="achievements">
+			<div class="work">
+				<i class="fas fa-atom"></i>
+				<p class="work-heading">Projects</p>
+				<p class="work-text">I have worked on many projects and I am
+					very proud of them. I am a very good developer and I am always
+					looking for new projects.</p>
+			</div>
+			<div class="work">
+				<i class="fas fa-skiing"></i>
+				<p class="work-heading">Skills</p>
+				<p class="work-text">I have a lot of skills and I am very good
+					at them. I am very good at programming and I am always looking for
+					new skills.</p>
+			</div>
+			<div class="work">
+				<i class="fas fa-ethernet"></i>
+				<p class="work-heading">Network</p>
+				<p class="work-text">I have a lot of network skills and I am
+					very good at them. I am very good at networking and I am always
+					looking for new network skills.</p>
+			</div>
+		</div>
+		<div class="about-me">
+			<div class="about-me-text">
+				<h2>About Me</h2>
+				<p>I am a web developer and I love to create websites. I am a
+					very good developer and I am always looking for new projects. I am
+					a very good developer and I am always looking for new projects.</p>
+			</div>
+			<img
+				src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+				alt="me">
+		</div>
+	</main>
+	<footer class="footer">
+		<div class="copy">&copy; 2022 Developer</div>
+		<div class="bottom-links">
+			<div class="links">
+				<span>More Info</span> <a href="#">Home</a> <a href="#">About</a> <a
+					href="#">Contact</a>
+			</div>
+			<div class="links">
+				<span>Social Links</span> <a href="#"><i class="fab fa-facebook"></i></a>
+				<a href="#"><i class="fab fa-twitter"></i></a> <a href="#"><i
+					class="fab fa-instagram"></i></a>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>
